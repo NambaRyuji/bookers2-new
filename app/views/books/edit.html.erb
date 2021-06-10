@@ -1,0 +1,56 @@
+<%= render 'books/list', books: @books %>
+<%= flash[:notice] %>
+<% if @book.errors.any? %>
+<div id = "error_explanation" >
+ <h2> <%= @book.errors.count %>errors prohibited this book from being saved:</h2>
+  <br>
+ <ul> <% @book.errors.full_messages.each do |message| %>
+   <li> <%= message %> </li>
+  <% end %>
+<ul>  </div>
+<% end %>
+<main>
+      <main>
+        <p id="notice"></p>
+        <div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>Editing Book</h2>
+
+
+
+         <%= form_with model:@book,url: book_path(@book), method: :patch, local: true do |f| %>
+         <div class="form-group">
+        <label for="user_name">title</label><br>
+        <%= f.text_field :title, id:"book_title", placeholder:"名前" %>
+
+      </div>
+
+        <label for="user_introduction">Introduction</label><br>
+          <%= f.text_field :body, id:"body" %>
+<br><br>
+        <div class="actions">
+ <%= f.submit "Update Book" %></div>
+
+      <% end %>
+       <tr><%= link_to "Show",  book_path %>
+
+    |
+
+<%= link_to "Back", "/books" %>
+  </div>
+
+</div>
+
+      </main>
+    <footer>
+  <div class='container mt-5'>
+  	<div class='row'>
+    	<div class='mx-auto'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+
+  </body>
